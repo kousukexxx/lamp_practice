@@ -42,9 +42,23 @@
       </div>
     </div>
   </div>
+  <div calss ="ranking">
+  
+  <?php $rank = 1; ?>
+  <table>
+    <tr>
+      <th>順位</th>
+      <th>商品名</th>
+    </tr>
     <?php foreach($rankings as $ranking) { ?>
-      <p><?php print($ranking['total']); ?></P>
+      <tr>
+      <td><?php print $rank; ?></td>
+      <td><?php print($ranking['name']); ?></td>
+      </tr>
+      <?php $rank++; ?>
     <?php } ?>
+  </table>  
+  </div>
   
 </body>
 </html>

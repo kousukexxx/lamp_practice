@@ -46,15 +46,19 @@ function get_items($db, $is_open = false){
 function get_ranking($db) {
   $sql = "
     SELECT
-      name,
-      item_id,
+      items.name,
+      items.item_id,
       SUM(amount) AS total
     FROM
       detail
+    JOIN
+      items
+    ON
+      detail.item_id = items.item_id
     GROUP BY
-      item_id
+      detail.item_id
     ORDER BY
-      total
+      total desc
     LIMIT 3
     ";
     return fetch_all_query($db, $sql);
