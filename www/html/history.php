@@ -2,6 +2,7 @@
 require_once '../conf/const.php';
 require_once MODEL_PATH . 'functions.php';
 require_once MODEL_PATH . 'user.php';
+require_once MODEL_PATH . 'cart.php';
 require_once MODEL_PATH . 'item.php';
 require_once MODEL_PATH . 'history.php';
 
@@ -14,9 +15,9 @@ if(is_logined() === false){
 $db = get_db_connect();
 $user = get_login_user($db);
 
-$items = get_open_items($db);
+$historys = get_history($db, $user['user_id']);
+$historys_all = get_all_history($db);
 
-$details_all = get_all_detail($db);
-$rankings = get_ranking($db);
+$history_id = get_post('history_id');
 
-include_once VIEW_PATH . 'index_view.php';
+include_once VIEW_PATH . 'history_view.php';

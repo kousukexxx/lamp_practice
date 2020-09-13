@@ -43,6 +43,23 @@ function get_items($db, $is_open = false){
   return fetch_all_query($db, $sql);
 }
 
+function get_ranking($db) {
+  $sql = "
+    SELECT
+      name,
+      item_id,
+      SUM(amount) AS total
+    FROM
+      detail
+    GROUP BY
+      item_id
+    ORDER BY
+      total
+    LIMIT 3
+    ";
+    return fetch_all_query($db, $sql);
+}
+
 function get_all_items($db){
   return get_items($db);
 }

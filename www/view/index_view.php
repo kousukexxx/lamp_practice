@@ -42,6 +42,9 @@
       </div>
     </div>
   </div>
+    <?php foreach($rankings as $ranking) { ?>
+      <p><?php print($ranking['total']); ?></P>
+    <?php } ?>
   
 </body>
 </html>
