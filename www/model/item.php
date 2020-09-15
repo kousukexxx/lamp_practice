@@ -48,6 +48,7 @@ function get_ranking($db) {
     SELECT
       items.name,
       items.item_id,
+      items.image,
       SUM(amount) AS total
     FROM
       detail

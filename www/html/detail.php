@@ -16,6 +16,7 @@ $db = get_db_connect();
 $user = get_login_user($db);
 
 $historys = get_history($db, $user['user_id']);
+$historys_all = get_all_history($db);
 
 $history_id = get_get('history_id');
 

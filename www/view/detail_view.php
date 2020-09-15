@@ -22,19 +22,33 @@
         </tr>
       </thead>
       <tbody>
-      <?php foreach($historys as $history) { ?>
-        <tr>
-          <td><?php print($history['history_id']); ?></th>
-          <td><?php print($history['created']); ?></th>
-          <td><?php print($history['total']); ?></th>
-          <td>
-            <form method="post" action="detail.php">
-              <input type="submit" value="購入明細">
-              <input type="hidden" name="history_id" value="<?php print($history['history_id']); ?>">
-            </form>
-          </td>
-        </tr>
-        <?php } ?>
+        <?php if(is_admin($user)) { ?>
+          <?php foreach($historys_all as $history_all) { ?>
+            <tr>
+              <td><?php print ($history_all['history_id']); ?></td>
+              <td><?php print ($history_all['created']); ?></td>
+              <td><?php print ($history_all['total']); ?></td>
+              <td>
+                <a href="detail.php?history_id=<?php print $history_all['history_id'];?>">購入明細</a>
+              </td>
+              </tr>
+          <?php } ?>
+        <?php } else if(is_admin($user) === false) { ?> 
+        <?php foreach($historys as $history) { ?>
+          <tr>
+            <td><?php print ($history['history_id']); ?></td>
+            <td><?php print ($history['created']); ?></td>
+            <td><?php print ($history['total']); ?></td>
+            <td>
+              <a href="detail.php?history_id=<?php print $history['history_id'];?>">購入明細</a>
+            </td>
+          </tr>
+          <?php } ?>
+        </tbody>
+      </table>
+        <?php } else { ?>
+    <p>購入履歴がありません</P>
+    <?php } ?>
       </tbody>
     </table>
 
@@ -48,16 +62,6 @@
         </tr>
       </thead>
       <tbody>
-      <?php if(is_admin($user)) { ?>
-        <?php foreach($details_all as $detail_all) { ?>
-          <tr>
-            <td><?php print ($detail_all['name']); ?></td>
-            <td><?php print ($detail_all['price']); ?></td>
-            <td><?php print ($detail_all['amount']); ?></td>
-            <td><?php print ($detail_all['subtotal']); ?></td>
-          </tr>
-        <?php } ?>
-      <?php } else { ?>
         <?php foreach($details as $detail) { ?>
           <tr>
             <td><?php print ($detail['name']); ?></td>
@@ -66,7 +70,6 @@
             <td><?php print ($detail['subtotal']); ?></td>
           </tr>
         <?php } ?>
-      <?php } ?>
       </tbody>
     </table>
   </body>

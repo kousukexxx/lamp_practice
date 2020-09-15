@@ -42,23 +42,20 @@
       </div>
     </div>
   </div>
-  <div calss ="ranking">
-  
+  <div>
+  <h2>人気ランキング</h2>
   <?php $rank = 1; ?>
   <table>
-    <tr>
-      <th>順位</th>
-      <th>商品名</th>
-    </tr>
     <?php foreach($rankings as $ranking) { ?>
       <tr>
-      <td><?php print $rank; ?></td>
-      <td><?php print($ranking['name']); ?></td>
+      <td><?php print $rank; ?>位</td>
+      
+      <td><p><img class="ranking_img" src="<?php print(IMAGE_PATH . $ranking['image']); ?>" width="100"></p>
+      <p><?php print($ranking['name']); ?></td></p>
       </tr>
       <?php $rank++; ?>
     <?php } ?>
   </table>  
   </div>
-  
 </body>
 </html>
