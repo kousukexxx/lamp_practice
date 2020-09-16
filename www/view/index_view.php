@@ -42,6 +42,20 @@
       </div>
     </div>
   </div>
-  
+  <div>
+  <h2>人気ランキング</h2>
+  <?php $rank = 1; ?>
+  <table>
+    <?php foreach($rankings as $ranking) { ?>
+      <tr>
+      <td><?php print $rank; ?>位</td>
+      
+      <td><p><img class="ranking_img" src="<?php print(IMAGE_PATH . $ranking['image']); ?>" width="100"></p>
+      <p><?php print($ranking['name']); ?></td></p>
+      </tr>
+      <?php $rank++; ?>
+    <?php } ?>
+  </table>  
+  </div>
 </body>
 </html>
